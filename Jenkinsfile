@@ -25,14 +25,14 @@ pipeline{
             }
         }
         stage('UnitTest'){
-            agent {label 'linux_slave'}
+            agent any
             steps{
                 git 'https://github.com/devops-trainer/DevOpsClassCodes.git'
                 sh 'mvn test'
             }
         }
         stage('MetricCheck'){
-            agent{label 'linux_slave'}
+            agent any
             steps{
                 sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
             }
